@@ -8,3 +8,4 @@ if ! grep -qs "recommended by brew doctor" ~/.zshrc; then
     echo "export PATH='/usr/local/bin:$PATH'\n" >> ~/.zshrc
     source ~/.zshrc
 fi
+

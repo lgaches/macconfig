@@ -1,11 +1,13 @@
 #!/usr/bin/env zsh
 ### end common-components/zsh-shebang
 
-# Welcome to the MacConfig script! Be prepared to turn your  mac
+# Welcome to the Air France MacConfig script! Be prepared to turn your  mac
 # into an awesome development machine.
 
 # This file is auto-generated. Do not edit it by hand unless you know what
-# you're doing. Please see 'CONTRIBUTING.md' for more information.### end common-components/header
+# you're doing. Please see 'CONTRIBUTING.md' for more information.
+
+### end common-components/header
 
 trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT
 
@@ -26,16 +28,9 @@ if ! grep -qs "recommended by brew doctor" ~/.zshrc; then
     echo "\n# recommended by brew doctor" >> ~/.zshrc
     echo "export PATH='/usr/local/bin:$PATH'\n" >> ~/.zshrc
     source ~/.zshrc
-fi### end mac-components/homebrew
+fi
 
-fancy_echo "Installing The Silver Searcher (better than ack or grep) to search the contents of files ..."
-  brew install the_silver_searcher
-
-fancy_echo "Installing ImageMagick, to crop and resize images ..."
-  brew install imagemagick
-
-fancy_echo "Installing watch, to execute a program periodically and show the output ..."
-  brew install watch### end mac-components/packages
+### end mac-components/homebrew
 
 fancy_echo "Installing rbenv, to change Ruby versions ..."
   brew install rbenv
@@ -53,7 +48,8 @@ fancy_echo "Installing rbenv-gem-rehash so the shell automatically picks up bina
   brew install rbenv-gem-rehash
 
 fancy_echo "Installing ruby-build, to install Rubies ..."
-  brew install ruby-build### end mac-components/rbenv
+  brew install ruby-build
+  ### end mac-components/rbenv
 
 fancy_echo "Installing Ruby 2.0.0-p247 ..."
   rbenv install 2.0.0-p247
@@ -83,5 +79,7 @@ for name in $HOME/dotfiles/*; do
       ln -s "$PWD/$name" "$target"
     fi
   fi
-done### end common-components/dotfiles
+done
+
+### end common-components/dotfiles
 

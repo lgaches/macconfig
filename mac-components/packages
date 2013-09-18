@@ -6,3 +6,5 @@ fancy_echo "Installing ImageMagick, to crop and resize images ..."
 
 fancy_echo "Installing watch, to execute a program periodically and show the output ..."
   brew install watch
+  
+  

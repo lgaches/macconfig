@@ -13,3 +13,4 @@ for name in $HOME/dotfiles/*; do
     fi
   fi
 done
+
