@@ -1,0 +1,87 @@
+#!/usr/bin/env zsh
+### end common-components/zsh-shebang
+
+# Welcome to the MacConfig script! Be prepared to turn your  mac
+# into an awesome development machine.
+
+# This file is auto-generated. Do not edit it by hand unless you know what
+# you're doing. Please see 'CONTRIBUTING.md' for more information.### end common-components/header
+
+trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT
+
+set -e
+### end common-components/exit-trap
+
+fancy_echo() {
+  echo "\n$1"
+}
+### end common-components/shared-functions
+
+fancy_echo "Installing Homebrew, a good OS X package manager ..."
+  ruby <(curl -fsS https://raw.github.com/mxcl/homebrew/go)
+  brew update
+
+if ! grep -qs "recommended by brew doctor" ~/.zshrc; then
+  fancy_echo "Put Homebrew location earlier in PATH ..."
+    echo "\n# recommended by brew doctor" >> ~/.zshrc
+    echo "export PATH='/usr/local/bin:$PATH'\n" >> ~/.zshrc
+    source ~/.zshrc
+fi### end mac-components/homebrew
+
+fancy_echo "Installing The Silver Searcher (better than ack or grep) to search the contents of files ..."
+  brew install the_silver_searcher
+
+fancy_echo "Installing ImageMagick, to crop and resize images ..."
+  brew install imagemagick
+
+fancy_echo "Installing watch, to execute a program periodically and show the output ..."
+  brew install watch### end mac-components/packages
+
+fancy_echo "Installing rbenv, to change Ruby versions ..."
+  brew install rbenv
+
+  if ! grep -qs "rbenv init" ~/.zshrc; then
+    echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+
+    fancy_echo "Enable shims and autocompletion ..."
+      eval "$(rbenv init -)"
+  fi
+
+  source ~/.zshrc
+
+fancy_echo "Installing rbenv-gem-rehash so the shell automatically picks up binaries after installing gems with binaries..."
+  brew install rbenv-gem-rehash
+
+fancy_echo "Installing ruby-build, to install Rubies ..."
+  brew install ruby-build### end mac-components/rbenv
+
+fancy_echo "Installing Ruby 2.0.0-p247 ..."
+  rbenv install 2.0.0-p247
+
+fancy_echo "Setting Ruby 2.0.0-p247 as global default Ruby ..."
+  rbenv global 2.0.0-p247
+  rbenv rehash
+
+fancy_echo "Updating to latest Rubygems version ..."
+  gem update --system
+
+fancy_echo "Installing critical Ruby gems for Rails development ..."
+  gem install bundler cocoapods --no-document
+### end common-components/ruby-environment
+
+git clone https://github.com/lgaches/dotfiles.git $HOME/dotfiles
+
+for name in $HOME/dotfiles/*; do
+  target="$HOME/.$name"
+  if [ -e "$target" ]; then
+    if [ ! -L "$target" ]; then
+      echo "WARNING: $target exists but is not a symlink."
+    fi
+  else
+    if [ "$name" != 'install.sh' ] && [ "$name" != 'README.md' ]; then
+      echo "Creating $target"
+      ln -s "$PWD/$name" "$target"
+    fi
+  fi
+done### end common-components/dotfiles
+
