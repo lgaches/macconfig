@@ -61,13 +61,11 @@ fancy_echo "Setting Ruby 2.0.0-p247 as global default Ruby ..."
 fancy_echo "Updating to latest Rubygems version ..."
   gem update --system
 
-fancy_echo "Installing critical Ruby gems for Rails development ..."
-  gem install bundler cocoapods --no-document
 ### end common-components/ruby-environment
 
 git clone https://github.com/lgaches/dotfiles.git $HOME/dotfiles
 
-for name in $HOME/dotfiles/*; do
+for name in dotfiles/*; do
   target="$HOME/.$name"
   if [ -e "$target" ]; then
     if [ ! -L "$target" ]; then
@@ -82,4 +80,12 @@ for name in $HOME/dotfiles/*; do
 done
 
 ### end common-components/dotfiles
+
+fancy_echo "Installing gem for iOS development ..."
+  gem install bundler cocoapods nomad-cli
+  
+fancy_echo "Installing appledoc"
+  brew install appledoc
+  
+  ### end mac-components/objc
 

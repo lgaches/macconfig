@@ -1,0 +1,7 @@
+fancy_echo "Installing gem for iOS development ..."
+  gem install bundler cocoapods nomad-cli
+  
+fancy_echo "Installing appledoc"
+  brew install appledoc
+  
+  

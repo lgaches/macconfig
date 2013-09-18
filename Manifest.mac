@@ -6,3 +6,4 @@ mac-components/homebrew
 mac-components/rbenv
 common-components/ruby-environment
 common-components/dotfiles
+mac-components/objc

@@ -1,10 +1,6 @@
 Contributing
 ============
 
-MacConfig is broken into components to maximize sharing between operating systems
-and linux distros, while retaining the easy hackability of a "single file"
-installation.
-
 To extend / modify MacConfig:
 
 1) Find a component that most closely fits what you want to change. If nothing
