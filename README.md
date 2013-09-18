@@ -11,8 +11,14 @@ for Lion (OS X 10.7) or Mountain Lion (OS X 10.8).
 	
 
 3) Read, then run the script:
-
+Fresh Mac
+	
 	zsh <(curl -s https://raw.github.com/lgaches/macconfig/master/mac)
+	
+
+Mac with Homebrew
+
+	zsh <(curl -s https://raw.github.com/lgaches/macconfig/master/macwhb)
 
 What it sets up
 ---------------

@@ -1,6 +1,7 @@
 git clone https://github.com/lgaches/dotfiles.git $HOME/dotfiles
 
-for name in dotfiles/*; do
+cd $HOME/dotfiles
+for name in *; do
   target="$HOME/.$name"
   if [ -e "$target" ]; then
     if [ ! -L "$target" ]; then
@@ -13,4 +14,6 @@ for name in dotfiles/*; do
     fi
   fi
 done
+
+cd $HOME
 
