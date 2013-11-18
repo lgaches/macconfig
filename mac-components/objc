@@ -6,4 +6,7 @@ fancy_echo "Installing gem for iOS development ..."
 fancy_echo "Installing appledoc"
   brew install appledoc
   
+fancy_echo "Installing Xcproj"
+  brew install xcproj	
+  
   

@@ -1,6 +1,3 @@
-fancy_echo "Installing The Silver Searcher (better than ack or grep) to search the contents of files ..."
-  brew install the_silver_searcher
-
 fancy_echo "Installing ImageMagick, to crop and resize images ..."
   brew install imagemagick
 

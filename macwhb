@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 ### end common-components/zsh-shebang
 
-# Welcome to the Air France MacConfig script! Be prepared to turn your  mac
+# Welcome to the MacConfig script! Be prepared to turn your  mac
 # into an awesome development machine.
 
 # This file is auto-generated. Do not edit it by hand unless you know what
@@ -18,6 +18,12 @@ fancy_echo() {
   echo "\n$1"
 }
 ### end common-components/shared-functions
+
+if [[ -f /etc/zshenv ]]; then
+  fancy_echo "Fixing OSX zsh environment bug ..."
+    sudo mv /etc/{zshenv,zshrc}
+fi
+### end mac-components/zsh-fix
 
 fancy_echo "Installing rbenv, to change Ruby versions ..."
   brew install rbenv
@@ -72,10 +78,15 @@ cd $HOME
 ### end common-components/dotfiles
 
 fancy_echo "Installing gem for iOS development ..."
-  gem install bundler cocoapods nomad-cli
+  gem install bundler cocoapods zip nomad-cli
+  
+  pod setup
   
 fancy_echo "Installing appledoc"
   brew install appledoc
+  
+fancy_echo "Installing Xcproj"
+  brew install xcproj	
   
   ### end mac-components/objc
 
